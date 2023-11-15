@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../models/note_model.dart';
 
 class NotesTile extends StatelessWidget {
@@ -11,9 +10,12 @@ class NotesTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
+       constraints:const BoxConstraints(
+        minHeight: 150
+       ),
       //color: const Color.fromARGB(255, 142, 38, 83),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(25)),
+      decoration:const  BoxDecoration(
+        borderRadius:BorderRadius.all(Radius.circular(25)),
         gradient: LinearGradient(
           colors: [
             Color.fromARGB(255, 176, 195, 192),
@@ -24,6 +26,7 @@ class NotesTile extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
         ),
+        //color: theme.colorScheme.secondary
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),

@@ -15,7 +15,7 @@ class AddNoteDialog extends StatelessWidget {
     return Dialog(
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               Text(
@@ -34,13 +34,18 @@ class AddNoteDialog extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.secondary, // Set the background color
+                  ),
                   onPressed: () {
                     Provider.of<NoteProvider>(context, listen: false).addNote(
                         NoteModel(
                             title: notetitle.text, description: noteDesc.text));
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Add Note'))
+                  child:  Text('Add Note',
+                  style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                  ))
             ],
           ),
         ),

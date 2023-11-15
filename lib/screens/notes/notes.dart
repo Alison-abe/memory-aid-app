@@ -20,8 +20,12 @@ class Notes extends StatelessWidget {
         backgroundColor: theme.colorScheme.primary,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddNoteDialog()));
+            // Navigator.of(context).push(
+            //     MaterialPageRoute(builder: (context) => const AddNoteDialog()));
+            showDialog(context: context, builder: (BuildContext context){
+              return const AddNoteDialog();
+            });
+            
           },
           backgroundColor: theme.colorScheme.secondary,
           child: const Icon(
@@ -40,7 +44,7 @@ class Notes extends StatelessWidget {
           ),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(left: 20,right: 20,top: 10,),
             child: StreamBuilder<QuerySnapshot>(
               stream: collection.snapshots(),
               builder: (_, snapshot) {
@@ -53,7 +57,7 @@ class Notes extends StatelessWidget {
                       itemCount: documents.length,
                       itemBuilder: (BuildContext context, index) {
                         return Padding(
-                            padding: const EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 20),
+                            padding: const EdgeInsets.only(left: 10,right: 10,top: 20,),
                             child: NotesTile(
                                 note: NoteModel(
                                     title: documents[index].get('title'),

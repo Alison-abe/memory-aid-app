@@ -1,10 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:memory_aid/provider/answer_provider.dart';
+import 'package:memory_aid/provider/exercise_provider.dart';
 import 'package:memory_aid/provider/note_provider.dart';
 import 'package:memory_aid/provider/profile_provider.dart';
 import 'package:memory_aid/provider/record_provider.dart';
+import 'package:memory_aid/provider/search_provider.dart';
 import 'package:memory_aid/provider/signin_provider.dart';
+import 'package:memory_aid/provider/summary_provider.dart';
 import 'package:memory_aid/screens/home_screen.dart';
 import 'package:memory_aid/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -32,12 +36,20 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context)=> RecordProvider()),
         ChangeNotifierProvider(
           create: (BuildContext context)=> NoteProvider()),
+        ChangeNotifierProvider(
+          create: (BuildContext context)=> SummaryProvider()),
+        ChangeNotifierProvider(
+          create: (BuildContext context)=> ExerciseProvider()),
+        ChangeNotifierProvider(
+          create: (BuildContext context)=> AnswerProvider()),
+        ChangeNotifierProvider(
+          create: (BuildContext context)=> SearchProvider()),
       ],
       child: MaterialApp(
       title: 'Memory Aid',
       theme: ThemeData(
         colorScheme:const ColorScheme.light(
-          primary:  Colors.black,
+          primary:  Color.fromARGB(255, 42, 41, 41),
           //Color.fromARGB(255, 45, 44, 44),
           secondary: Color.fromARGB(255, 117, 162, 139),
           tertiary: Colors.white,

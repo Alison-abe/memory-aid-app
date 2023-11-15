@@ -45,7 +45,7 @@ class _RecordButtonState extends State<RecordButton> {
               
             },  
             child: CircleAvatar(
-              backgroundColor: theme.colorScheme.secondary,
+              backgroundColor:const Color.fromARGB(255, 56, 93, 88),
               radius: 50,
               child: Icon(
                 _isrecording ? Icons.mic : Icons.mic_none,
@@ -54,14 +54,14 @@ class _RecordButtonState extends State<RecordButton> {
             ),
           ),
         ),
-        const SizedBox(height: 5,),
         Text(
-          _isrecording ? "Recording your conversations..." : "Hold to record the conversations",
+          _isrecording ? "Recording your conversations..." : "Tap to record the conversations",
           style: GoogleFonts.manrope(
             color: theme.colorScheme.secondary,
             textStyle: const TextStyle(fontSize: 17)
           ),
-        )
+        ),
+        
         ],
     );
     

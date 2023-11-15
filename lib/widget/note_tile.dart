@@ -99,3 +99,87 @@ class NoteTile extends StatelessWidget {
     );
   }
 }
+
+
+// Column(
+                  //   children: [
+                  //     AnimatedBuilder(
+                  //         animation: _controller!,
+                  //         child: NoteTile(
+                  //             length: text[0].length,
+                  //             colorIndex: 1,
+                  //             text: text[0]),
+                  //         builder: (BuildContext context, Widget? child) {
+                  //           return Transform.translate(
+                  //             offset: Offset(_controller!.value * 200, 0.0),
+                  //             child: child,
+                  //           );
+                  //         }),
+                  //     Row(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         AnimatedBuilder(
+                  //             animation: _controller2!,
+                  //             child: NoteTile(
+                  //                 length: text[1].length,
+                  //                 colorIndex: 0,
+                  //                 text: text[1]),
+                  //             builder: (BuildContext context, Widget? child) {
+                  //               return Transform.translate(
+                  //                 offset:
+                  //                     Offset(_controller2!.value * -135, 0.0),
+                  //                 child: child,
+                  //               );
+                  //             }),
+                  //       ],
+                  //     ),
+                  //     Row(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         AnimatedBuilder(
+                  //             animation: _controller!,
+                  //             child: SingleChildScrollView(
+                  //               scrollDirection: Axis.horizontal,
+                  //               child: Row(
+                  //                 children: [
+                  //                   NoteTile(
+                  //                       length: text[2].length,
+                  //                       colorIndex: 2,
+                  //                       text: text[2]),
+                  //                   const SizedBox(
+                  //                     width: 5,
+                  //                   ),
+                  //                   NoteTile(
+                  //                       length: text[4].length,
+                  //                       colorIndex: 4,
+                  //                       text: text[4]),
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //             builder: (BuildContext context, Widget? child) {
+                  //               return Transform.translate(
+                  //                 offset: Offset(_controller2!.value * 175, 0.0),
+                  //                 child: child,
+                  //               );
+                  //             }),
+                  //       ],
+                  //     ),
+                  //     AnimatedBuilder(
+                  //         animation: _controller2!,
+                  //         child: NoteTile(
+                  //             length: text[3].length,
+                  //             colorIndex: 3,
+                  //             text: text[3]),
+                  //         builder: (BuildContext context, Widget? child) {
+                  //           return Transform.translate(
+                  //             offset: Offset(_controller!.value * -250, 0.0),
+                  //             child: child,
+                  //           );
+                  //         }),
+                  //         NoteTile(
+                  //             length: text[5].length,
+                  //             colorIndex: 5,
+                  //             text: text[5]),
+                          
+                  //   ],
+                  // )

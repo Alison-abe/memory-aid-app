@@ -16,7 +16,6 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 2;
-
   final List<Widget> _pages = [
     const Notes(),
     const SummaryPage(),
@@ -27,6 +26,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    
     final theme=Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,

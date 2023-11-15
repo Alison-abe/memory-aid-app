@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_aid/models/user_model.dart';
 import 'package:memory_aid/provider/signin_provider.dart';
+import 'package:memory_aid/screens/home_screen.dart';
 import 'package:memory_aid/widget/appbar_decoration.dart';
 import 'package:memory_aid/widget/edit_profile.dart';
 import 'package:memory_aid/widget/profile_details.dart';
@@ -34,6 +35,7 @@ class Profile extends StatelessWidget {
                     IconButton(
                         onPressed: () {
                           provider.logout();
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=> const HomeScreen()));
                         },
                         icon:  Icon(
                           Icons.logout,
