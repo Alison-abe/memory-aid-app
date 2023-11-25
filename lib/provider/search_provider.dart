@@ -9,7 +9,7 @@ class SearchProvider with ChangeNotifier{
   bool _search = true;
   bool get search => _search;
 
-  var _res="";
+  var _res=""; 
   String get res => _res;
 
   void setres(String value) {
