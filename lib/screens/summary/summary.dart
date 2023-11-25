@@ -60,7 +60,7 @@ class SummaryPage extends StatelessWidget {
           centerTitle: true,
           title: const Text(
             'Summary',
-            style: TextStyle(
+            style: TextStyle( 
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
           ),
           actions: [
@@ -76,9 +76,15 @@ class SummaryPage extends StatelessWidget {
                     'users/${FirebaseAuth.instance.currentUser!.uid}/texts')
                 .doc(Provider.of<SummaryProvider>(context, listen: false)
                               .selectedDate);
+
             DocumentSnapshot snapshot = await textId.get();
+  
             data = snapshot.data();
+            print("\n\ndata");
+            print(data);
             String? available = data?['content'] as String?;
+            print("\n\navailable");
+            print(available);
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {

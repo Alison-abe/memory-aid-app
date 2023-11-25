@@ -48,7 +48,7 @@ class _ExerciseState extends State<Exercise> {
                         builder: (BuildContext context) =>const Progress_Page()));
                   },
                   icon: Icon(
-                    Icons.info_outline_rounded,
+                    Icons.bar_chart_outlined,
                     color: theme.colorScheme.tertiary,
                   )),
             )

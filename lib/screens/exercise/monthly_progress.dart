@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:memory_aid/screens/exercise/monthly_progress.dart';
-import 'package:memory_aid/widget/lineChart.dart';
+import 'package:memory_aid/screens/exercise/progress.dart';
+import 'package:memory_aid/widget/monthly_lineChart.dart';
 import 'package:memory_aid/widget/pricePoint.dart';
 
-class Progress_Page extends StatefulWidget {
-  const Progress_Page({super.key});
+class MProgress_Page extends StatefulWidget {
+  const MProgress_Page({super.key});
 
   @override
-  State<Progress_Page> createState() => _Progress_PageState();
+  State<MProgress_Page> createState() => _MProgress_PageState();
 }
 
-class _Progress_PageState extends State<Progress_Page> {
+class _MProgress_PageState extends State<MProgress_Page> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -32,16 +32,13 @@ class _Progress_PageState extends State<Progress_Page> {
               )),
               const SizedBox(height: 30,),
               Container(
-                child: LineChartWidget(futurePoints: pricePoints),
+                child: MLineChartWidget(futurePoints: monthly_pricePoints),
               ),
               const SizedBox(height: 20,),
               ElevatedButton(onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>const MProgress_Page()));
-              }, child: Text("Fuck Me!")),
-              ElevatedButton(onPressed: (){
                 Navigator.of(context).pop();
-              }, child: Text("Fuck Me Excercise!"))
+              }, child: Text("Fuck Me Back!"))
+
             ],
           ),
         ),
