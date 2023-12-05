@@ -57,7 +57,7 @@ Future<List<PricePoint>> get pricePoints async {
     currweek = currweek.subtract(const Duration(days: 1));
   }
 
-  if(DateTime.now().weekday==5) {
+  if(DateTime.now().weekday==7) {
     monthlypoints[weekNumber-1] += datapoints.reduce((value, element) => value + element);
   }
 

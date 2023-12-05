@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "887258875306-ft5k3bufhcq7sl0lduq0mr4a2o1t4kgg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.memory_aid",
+            "certificate_hash": "fe53f0389b5952fd375690f17599a2e243854212"
+          }
+        },
+        {
           "client_id": "887258875306-t9rg1h9kbvoev60um0mt2qq0tg4l99sj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

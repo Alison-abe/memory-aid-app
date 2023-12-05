@@ -37,6 +37,7 @@ class SummaryPage extends StatelessWidget {
             DocumentSnapshot snapshot = await textId.get();
             data = snapshot.data();
             String? available = data?['content'] as String?;
+            print("avail:${available}");
             final summary =
                 await Provider.of<SummaryProvider>(context, listen: false)
                     .Summaryquery({"inputs": available});

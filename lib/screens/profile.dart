@@ -9,6 +9,8 @@ import 'package:memory_aid/widget/edit_profile.dart';
 import 'package:memory_aid/widget/profile_details.dart';
 import 'package:provider/provider.dart';
 
+
+
 class Profile extends StatelessWidget {
   const Profile({super.key});
 

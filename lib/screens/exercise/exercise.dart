@@ -7,7 +7,6 @@ import 'package:memory_aid/provider/exercise_provider.dart';
 import 'package:memory_aid/screens/exercise/progress.dart';
 import 'package:memory_aid/widget/questionpage.dart';
 import 'package:provider/provider.dart';
-
 import '../../widget/appbar_decoration.dart';
 
 class Exercise extends StatefulWidget {
@@ -45,7 +44,8 @@ class _ExerciseState extends State<Exercise> {
               child: IconButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>const Progress_Page()));
+                        builder: (BuildContext context) =>
+                            const Progress_Page()));
                   },
                   icon: Icon(
                     Icons.bar_chart_outlined,

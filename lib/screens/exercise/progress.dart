@@ -38,10 +38,10 @@ class _Progress_PageState extends State<Progress_Page> {
               ElevatedButton(onPressed: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) =>const MProgress_Page()));
-              }, child: Text("Fuck Me!")),
+              }, child: Text("Monthly Progress!")),
               ElevatedButton(onPressed: (){
                 Navigator.of(context).pop();
-              }, child: Text("Fuck Me Excercise!"))
+              }, child: Text("Go Back!"))
             ],
           ),
         ),

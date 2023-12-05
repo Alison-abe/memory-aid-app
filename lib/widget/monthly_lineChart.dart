@@ -24,7 +24,7 @@ class MLineChartWidget extends StatelessWidget {
           List<PricePoint> points = snapshot.data!;
           
           return AspectRatio(
-        aspectRatio: 1,
+        aspectRatio: 2,
         child: LineChart(LineChartData(
             titlesData: FlTitlesData(
                 rightTitles:
@@ -44,28 +44,26 @@ class MLineChartWidget extends StatelessWidget {
                   getTitlesWidget: (value, meta) {
                     switch (value.toInt()) {
                       case 0:
-                        return Text(
-                          '1',
-                          style: TextStyle(color: theme.colorScheme.tertiary),
-                        );
+                        return Text('W1',
+                          style: TextStyle(color: theme.colorScheme.tertiary));
                       case 1:
-                        return Text('2',
+                        return Text('W2',
                             style:
                                 TextStyle(color: theme.colorScheme.tertiary));
                       case 2:
-                        return Text('3',
+                        return Text('W3',
                             style:
                                 TextStyle(color: theme.colorScheme.tertiary));
                       case 3:
-                        return Text('4',
+                        return Text('W4',
                             style:
                                 TextStyle(color: theme.colorScheme.tertiary));
                       case 4:
-                        return Text('5',
+                        return Text('W5',
                             style:
                                 TextStyle(color: theme.colorScheme.tertiary));
                       case 5:
-                        return Text('6',
+                        return Text('W6',
                             style:
                                 TextStyle(color: theme.colorScheme.tertiary));
                       

@@ -33,7 +33,7 @@ class QuestionPAge extends StatelessWidget {
       child: Scaffold(
         backgroundColor: theme.colorScheme.primary,
         floatingActionButton: Visibility(
-          visible: index != 3,
+          visible: index != 5,
           child: FloatingActionButton(
               backgroundColor: theme.colorScheme.secondary,
               onPressed: () {},
@@ -171,7 +171,7 @@ class QuestionPAge extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 20,),
-                index == 3
+                index == 5
                     ? ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(

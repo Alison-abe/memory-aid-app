@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_aid/screens/exercise/progress.dart';
+
 import 'package:memory_aid/widget/monthly_lineChart.dart';
 import 'package:memory_aid/widget/pricePoint.dart';
 
@@ -37,7 +37,7 @@ class _MProgress_PageState extends State<MProgress_Page> {
               const SizedBox(height: 20,),
               ElevatedButton(onPressed: (){
                 Navigator.of(context).pop();
-              }, child: Text("Fuck Me Back!"))
+              }, child: Text("Weekly Progress!"))
 
             ],
           ),

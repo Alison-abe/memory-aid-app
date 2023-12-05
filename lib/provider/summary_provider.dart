@@ -12,6 +12,7 @@ class SummaryProvider with ChangeNotifier {
   String? get selectedDate => _selectedDate;
   String? get selectedSummary => _selectedSummary;
 
+
   void setselectedDate(String? value) {
     _selectedDate = value;
     notifyListeners();
@@ -36,6 +37,22 @@ class SummaryProvider with ChangeNotifier {
     "Authorization": "Bearer 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",
   };
 
+  // Future getText() async {
+  //     String currentDate =
+  //               DateFormat('yyyy-MM-dd').format(DateTime.now());
+  //     final data;
+  //     final textId = FirebaseFirestore.instance.collection(
+  //                   'users/${FirebaseAuth.instance.currentUser!.uid}/text')
+  //               .doc(currentDate);
+  //           DocumentSnapshot snapshot = await textId.get();
+  //           data = snapshot.data();
+  //           String? available = data?['content'] as String?;
+  //   return available;
+  // }
+
+  
+
+
   Future<String> questionQuery(Map<String, dynamic> payload) async {
     final response = await http.post(Uri.parse(apiUrl),
         headers: headers, body: jsonEncode(payload));
@@ -50,11 +67,17 @@ class SummaryProvider with ChangeNotifier {
     "Authorization": "Bearer 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",
   };
   Future<String> Summaryquery(Map<String, dynamic> payload) async {
+    
+    // var text_payl = getText();
+
+    print("payload:${payload}");
     final response = await http.post(Uri.parse(summaryapiUrl),
         headers: summaryheaders, body: jsonEncode(payload));
+        print("res:${response.body}");
     final output = jsonDecode(response.body);
-    String output_summary = output[0]['generated_text'];
-    List<String> splited_summary = output_summary.split(".");
+   //// print(output);
+    // String output_summary = output[0]['generated_text'];
+    List<String> splited_summary = payload['inputs'].split(".");
     for (int i = 0; i < splited_summary.length - 1; i++) {
       String Qoutput = await questionQuery({
         "inputs": splited_summary[i],

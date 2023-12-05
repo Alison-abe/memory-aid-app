@@ -1,13 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 import 'package:memory_aid/screens/home_screen.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/exercise_provider.dart';
+import '../provider/signin_provider.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
-
+   
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -16,11 +19,11 @@ class ResultPage extends StatelessWidget {
         backgroundColor: theme.colorScheme.primary,
         floatingActionButton: FloatingActionButton(
           backgroundColor: theme.colorScheme.secondary,
-          onPressed: (){
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context)=>const HomeScreen()));
-          
-        },
-        child: const Icon(Icons.home),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => const HomeScreen()));
+          },
+          child: const Icon(Icons.home),
         ),
         body: Center(
           child: Column(
@@ -45,7 +48,7 @@ class ResultPage extends StatelessWidget {
               Container(
                 width: 200,
                 height: 200,
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                     colors: [
@@ -60,49 +63,67 @@ class ResultPage extends StatelessWidget {
                 ),
                 child: Center(
                   child: FutureBuilder<int>(
-                                future: Provider.of<ExerciseProvider>(context,
-                                        listen: false)
-                                    .getScore(),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<int> snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const CircularProgressIndicator();
-                                  } else if (snapshot.hasError) {
-                                    return Text('Error: ${snapshot.error}');
-                                  } else {
-                                    return Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Score : ',
-                                          style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                  color: theme
-                                                      .colorScheme.tertiary,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20)),
-                                        ),
-                                        Text(
-                                          '${snapshot.data ?? 0}',
-                                          style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                  color: theme
-                                                      .colorScheme.tertiary,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20)),
-                                        ),
-                                      ],
-                                    );
-                                  }
-                                }),
+                      future:
+                          Provider.of<ExerciseProvider>(context, listen: false)
+                              .getScore(),
+                      builder:
+                          (BuildContext context, AsyncSnapshot<int> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const CircularProgressIndicator();
+                        } else if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else {
+                          if (snapshot.data! <= 10) {
+                            sendEmail(context);
+                          }
+                          
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Score : ',
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        color: theme.colorScheme.tertiary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                              ),
+                              Text(
+                                '${snapshot.data ?? 0}',
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        color: theme.colorScheme.tertiary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                              ),
+                            ],
+                          );
+                        }
+                      }),
                 ),
               ),
-
             ],
           ),
         ),
       ),
     );
   }
+  Future sendEmail(BuildContext context) async{ 
+    var email = '${FirebaseAuth.instance.currentUser!.email}';    
+    final smtpServer = gmailSaslXoauth2(email, Provider.of<GoogleSignInProvider>(context,listen: false).accessToken);
+    final message = Message()
+    ..from = Address(email,'${FirebaseAuth.instance.currentUser!.displayName}')
+    ..recipients = ['tve20cs016@cet.ac.in']
+    ..subject = 'Results!!'
+    ..text = 'This is the result';
+    try
+    {
+      await send(message,smtpServer);
+    }
+    on MailerException catch(e){
+      print(e);
+    }
+  }
 }
+
